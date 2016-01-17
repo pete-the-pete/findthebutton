@@ -1,32 +1,9 @@
 <div class="container text-center">
   {{partial 'partials/nav'}}
 
-  {{#unless session.isAuthenticated}}
-    <div class="container">
-      <div class="jumbotron">
-        <h1>Find the button!</h1>
-        <p class="lead">An über casual HTML5 game created with Ember.</p>
-      </div>
+  {{outlet}}
 
-      <div class="row marketing">
-        <button {{action "signIn" "facebook"}}>
-          <img src="https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xaf1/t39.2178-6/851579_209602122530903_1060396115_n.png">
-        </button>
-        <p>to play all 25 levels and get on the leaderboard!</p>
-      </div>
-      <div class="row marketing">
-        <p>
-          - or -<br>
-          <a href="#">just play for fun</a>
-        </p>
-      </div>
-
-      <footer class="footer">
-        <p>&copy; 2015 Coffeenap, Inc.</p>
-      </footer>
-
-    </div> <!-- /container -->
-  {{else}}
-    {{outlet}}
-  {{/unless}}
+  <footer class="footer">
+    <p>&copy; 2015 Coffeenap, Inc.</p>
+  </footer>
  </div>

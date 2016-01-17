@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav pull-right">
         <li role="presentation" class="active"><a href="#">Home</a></li>
         <li role="presentation"><a href="#">Leaderboard</a></li>
-        <li role="presentation"><a href="#">About</a></li>
+        <li role="presentation">{{#link-to "about"}}About{{/link-to}}</li>
         {{#if session.isAuthenticated}}
           <li role="presentation"><button {{action "signOut"}}>Sign out</button></li>
         {{/if}}
