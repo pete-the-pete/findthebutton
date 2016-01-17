@@ -3,3 +3,8 @@ body {
   padding-top: 70px;
   padding-bottom: 30px;
 }
+
+/* apply 'pull-right' since we can't do it in the template */
+ul.nav.navbar-nav {
+  float: right !important;
+}
