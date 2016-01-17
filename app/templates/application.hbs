@@ -1,14 +1,55 @@
-<h2 id="title">Welcome to Ember</h2>
+<div class="container text-center">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">FindTheButton</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav pull-right">
+          <li role="presentation" class="active"><a href="#">Home</a></li>
+          <li role="presentation"><a href="#">Leaderboard</a></li>
+          <li role="presentation"><a href="#">About</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
 
-{{#if session.isAuthenticated}}
-  Logged in as {{session.currentUser.displayName}}
-  <button {{action "signOut"}}>Sign out</button>
-  {{outlet}}
-{{else}}
-  <button {{action "signIn" "facebook"}}>
-    <img src="https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xaf1/t39.2178-6/851579_209602122530903_1060396115_n.png">
-  </button>
-{{/if}}
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Find the button!</h1>
+      <p class="lead">An über casual HTML5 game created with Ember.</p>
+    </div>
 
+    <div class="row marketing">
+      {{#if session.isAuthenticated}}
+        Logged in as {{session.currentUser.displayName}}
+        <button {{action "signOut"}}>Sign out</button>
+        {{outlet}}
+      {{else}}
+        <button {{action "signIn" "facebook"}}>
+          <img src="https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xaf1/t39.2178-6/851579_209602122530903_1060396115_n.png">
+        </button>
+        <p>to play all 25 levels and get on the leaderboard!</p>
+      {{/if}}
+    </div>
+    <div class="row marketing">
+      <p>
+        - or -<br>
+        <a href="#">just play for fun</a>
+      </p>
+    </div>
+
+    <footer class="footer">
+      <p>&copy; 2015 Coffeenap, Inc.</p>
+    </footer>
+
+  </div> <!-- /container -->
+ </div>
 
 {{outlet}}
