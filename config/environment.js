@@ -4,6 +4,17 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'findthebutton',
     environment: environment,
+    contentSecurityPolicy: {
+      'script-src': "'self' 'unsafe-inline' *.firebaseio.com *.facebook.net *.facebook.com",
+      'connect-src': "'self' auth.firebase.com wss://*.firebaseio.com",
+      'frame-src': "'self' *.firebaseio.com *.facebook.com",
+      'style-src': "'self' 'unsafe-inline'",
+      'img-src': "'self' *.fbcdn.net"
+    },
+    firebase: 'https://findthebutton.firebaseio.com/',
+    torii: {
+      sessionServiceName: 'session'
+    },
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
