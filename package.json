@@ -12,11 +12,14 @@
     "start": "ember server",
     "test": "ember test"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pete-the-pete/findthebutton"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "pete_the_pete",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
