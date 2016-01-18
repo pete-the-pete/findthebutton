@@ -8,3 +8,7 @@ body {
 ul.nav.navbar-nav {
   float: right !important;
 }
+
+.timer div {
+  display: inline-block;
+}

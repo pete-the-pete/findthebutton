@@ -1,7 +1,10 @@
-{{attrs.currentLevel}}
-
-{{!-- play time --}}
-{{x-timer format='HH:MM:SS'
-    showStartBtn=false
-    stopRequired=false
-    updatePausedTime='updatePausedTime'}}
+<div class="row">
+  Level: {{concat levelDisplay " - " attrs.levelTitle}}
+</div>
+<div class="row timer">
+  {{!-- play time --}}
+  Time: {{x-timer format='HH:MM:SS'
+      showStartBtn=false
+      stopRequired=false
+      updatePausedTime=(action 'updatePausedTime')}}
+</div>

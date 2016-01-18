@@ -1,2 +1,6 @@
-{{levelName}}
-{{countDownDisplay}}
+{{#if attrs.isWinner}}
+  You Won!
+{{else}}
+  {{levelName}}
+  {{countDownDisplay}}
+{{/if}}

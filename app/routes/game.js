@@ -16,6 +16,14 @@ export default Ember.Route.extend({
    */
   currentLevel: 0,
 
+  levelTitle: Ember.computed('currentLevel', function() {
+    return LEVELS[this.get('currentLevel')];
+  }),
+
+  levelFile: Ember.computed('levelTitle', function() {
+    return this.get('levelTitle').toLowerCase()
+  }),
+
   /**
    * Total time actually 'playing'
    */
@@ -25,16 +33,16 @@ export default Ember.Route.extend({
    * Pass the current state to the templates
    */
   model() {
-    let currentLevel = this.get('currentLevel');
-    let playTime = this.get('playTime');
-    let isPlaying = this.get('isPlaying');
-
-    return {
-      isPlaying,
-      currentLevel,
-      playTime,
-      LEVELS
-    };
+    let model = this.getProperties(
+      'currentLevel',
+      'levelTitle',
+      'levelFile',
+      'playTime',
+      'isPlaying'
+    );
+    model.isWinner = false;
+    model.LEVELS = LEVELS;
+    return model;
   },
 
   _start() {
@@ -70,6 +78,10 @@ export default Ember.Route.extend({
 
     advanceLevel() {
       this.incrementProperty('currentLevel');
+      if(this.get('currentLevel') === LEVELS.length) {
+        this.set('currentModel.isWinner', true);
+        this._pause();
+      }
     },
 
     resetGame() {
