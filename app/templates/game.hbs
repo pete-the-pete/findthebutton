@@ -1,15 +1,12 @@
-{{outlet}}
-<div class="col-xs-12 col-sm-12 col-md-10">
-  <div id="game-info">
-    I show the Level, Current Rank, and Total Time
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-10">
+    {{game-info currentLevel=model.currentLevel isPlaying=model.isPlaying}}
+    <div id="level">
+      {{level-info currentLevel=model.currentLevel isPlaying=model.isPlaying startPlaying="startPlaying"}}
+      One day I'll be a component!
+    </div>
   </div>
-  <div id="level-info">
-    I show the countdown and level name
+  <div class="col-md-2 hidden-xs text-centered">
+    I AM AN ADVERTISEMENT
   </div>
-  <div id="level">
-    One day I'll be a component!
-  </div>
-</div>
-<div class="col-md-2 text-centered">
-  I AM AN ADVERTISEMENT
 </div>
