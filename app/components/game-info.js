@@ -34,8 +34,6 @@ export default Ember.Component.extend({
   },
 
   actions: {
-    updatePausedTime(duration) {
-      debugger;
-    }
+    updatePausedTime(duration) {}
   }
 });

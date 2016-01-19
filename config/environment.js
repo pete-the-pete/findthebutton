@@ -5,11 +5,11 @@ module.exports = function(environment) {
     modulePrefix: 'findthebutton',
     environment: environment,
     contentSecurityPolicy: {
-      'script-src': "'self' 'unsafe-inline' *.firebaseio.com *.facebook.net *.facebook.com pagead2.googlesyndication.com",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' *.firebaseio.com *.facebook.net *.facebook.com pagead2.googlesyndication.com",
       'connect-src': "'self' auth.firebase.com wss://*.firebaseio.com pagead2.googlesyndication.com",
       'frame-src': "'self' *.firebaseio.com *.facebook.com pagead2.googlesyndication.com *.doubleclick.net",
       'style-src': "'self' 'unsafe-inline'",
-      'img-src': "'self' *.fbcdn.net"
+      'img-src': "'self' *.fbcdn.net",
     },
     firebase: 'https://findthebutton.firebaseio.com/',
     torii: {
