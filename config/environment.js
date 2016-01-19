@@ -5,9 +5,9 @@ module.exports = function(environment) {
     modulePrefix: 'findthebutton',
     environment: environment,
     contentSecurityPolicy: {
-      'script-src': "'self' 'unsafe-inline' *.firebaseio.com *.facebook.net *.facebook.com",
-      'connect-src': "'self' auth.firebase.com wss://*.firebaseio.com",
-      'frame-src': "'self' *.firebaseio.com *.facebook.com",
+      'script-src': "'self' 'unsafe-inline' *.firebaseio.com *.facebook.net *.facebook.com pagead2.googlesyndication.com",
+      'connect-src': "'self' auth.firebase.com wss://*.firebaseio.com pagead2.googlesyndication.com",
+      'frame-src': "'self' *.firebaseio.com *.facebook.com pagead2.googlesyndication.com *.doubleclick.net",
       'style-src': "'self' 'unsafe-inline'",
       'img-src': "'self' *.fbcdn.net"
     },
