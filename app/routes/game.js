@@ -6,23 +6,9 @@ const LEVELS = [
 
 export default Ember.Route.extend({
   /**
-   * Signifies when the user is actually playing, so the timer
-   * will be running and count towards their score.
-   */
-  isPlaying: false,
-
-  /**
-   * The current level the user is on
+   * Unecessary comment.
    */
   currentLevel: 0,
-
-  levelTitle: Ember.computed('currentLevel', function() {
-    return LEVELS[this.get('currentLevel')];
-  }),
-
-  levelFile: Ember.computed('levelTitle', function() {
-    return this.get('levelTitle').toLowerCase()
-  }),
 
   /**
    * Total time actually 'playing'
@@ -30,17 +16,38 @@ export default Ember.Route.extend({
   playTime: 0,
 
   /**
+   * Signifies when the user is actually playing, so the timer
+   * will be running and count towards their score.
+   */
+  isPlaying: false,
+
+  /**
+   * One day...
+   */
+  isWinner: false,
+
+  /**
+   * glob of level data that updates based on the current level.
+   */
+  level: Ember.computed('currentLevel', function() {
+    let levelTitle = LEVELS[this.get('currentLevel')];
+    return {
+      levelTitle,
+      currentLevel: this.get('currentLevel'),
+      levelFile: levelTitle.toLowerCase()
+    };
+  }),
+
+  /**
    * Pass the current state to the templates
    */
   model() {
     let model = this.getProperties(
-      'currentLevel',
-      'levelTitle',
-      'levelFile',
+      'level',
       'playTime',
+      'isWinner',
       'isPlaying'
     );
-    model.isWinner = false;
     model.LEVELS = LEVELS;
     return model;
   },

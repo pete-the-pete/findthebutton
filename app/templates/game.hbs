@@ -1,28 +1,5 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-10">
-    <div class="row">
-      <div class="col-md-2">
-        {{game-info currentLevel=model.currentLevel levelTitle=model.levelTitle isPlaying=model.isPlaying isWinner=model.isWinner}}
-      </div>
-      <div class="col-md-10">
-        <div id="game-board">
-          {{level-info currentLevel=model.currentLevel isPlaying=model.isPlaying isWinner=model.isWinner startPlaying="startPlaying"}}
-          {{component (concat 'levels/' model.levelFile) currentLevel=model.currentLevel isPlaying=model.isPlaying advanceLevel="advanceLevel" }}
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-md-2 hidden-md text-centered">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- RightRail -->
-    <ins class="adsbygoogle"
-        style="display:inline-block;width:300px;height:600px"
-        data-ad-client="ca-pub-2811298199735743"
-        data-ad-slot="3746614119"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-  </div>
-</div>
+{{game-container
+  level=model.level
+  isPlaying=model.isPlaying
+  isWinner=model.isWinner
+  startPlaying="startPlaying"}}
