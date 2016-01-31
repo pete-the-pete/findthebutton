@@ -17,11 +17,6 @@ export default Ember.Component.extend({
   currentLevel: 0,
 
   /**
-   * Total time actually 'playing'
-   */
-  playTime: 0,
-
-  /**
    * Signifies that the user has actually started playing a level,
    * to distinguish from isPlaying
    */
@@ -38,6 +33,10 @@ export default Ember.Component.extend({
    */
   isWinner: false,
 
+  playTime: Ember.computed('stopwatch.timer.time', function() {
+    return this.get('stopwatch.timer.time');
+  }),
+
   /**
    * glob of level data that updates based on the current level.
    */
@@ -51,6 +50,7 @@ export default Ember.Component.extend({
   }),
 
   _start() {
+    this.get('stopwatch.timer').start();
     this.set('hasStarted', true);
     this.set('isPlaying', true);
   },
@@ -58,10 +58,12 @@ export default Ember.Component.extend({
   _stop() {
     this.set('hasStarted', false);
     this.set('isPlaying', false);
+    this.get('stopwatch.timer').stop();
   },
 
   _pause() {
     this.set('isPlaying', false);
+    this.get('stopwatch.timer').pause();
   },
 
   actions: {
@@ -85,8 +87,7 @@ export default Ember.Component.extend({
       this.setProperties({
         'hasStarted': false,
         'isPlaying': false,
-        'currentLevel': 0,
-        'playTime': 0
+        'currentLevel': 0
       });
     }
   }
