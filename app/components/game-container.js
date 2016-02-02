@@ -67,6 +67,14 @@ export default Ember.Component.extend({
     this.get('stopwatch.timer').pause();
   },
 
+  _reset() {
+    this.setProperties({
+      'hasStarted': false,
+      'isPlaying': false,
+      'currentLevel': 0
+    });
+  },
+
   actions: {
     startPlaying() {
       this._start();
@@ -85,12 +93,15 @@ export default Ember.Component.extend({
       }
     },
 
+    playAgain() {
+      //maybe do something else, like keep track of
+      //how many rounds they have gone through
+      debugger;
+      this._reset();
+    },
+
     resetGame() {
-      this.setProperties({
-        'hasStarted': false,
-        'isPlaying': false,
-        'currentLevel': 0
-      });
+      this._reset();
     }
   }
 });
