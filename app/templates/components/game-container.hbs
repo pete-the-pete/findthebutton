@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-2">
         <div class="row">
-          Level: {{concat levelDisplay " - " attrs.levelTitle}}
+          Level: {{concat level.levelDisplay " - " level.levelTitle}}
         </div>
         <div class="row timer">
           {{!-- play time --}}
@@ -12,7 +12,7 @@
       </div>
       <div class="col-md-10">
         <div id="game-board">
-          {{level-info currentLevel=level.currentLevel isPlaying=isPlaying isWinner=isWinner startPlaying="startPlaying"}}
+          {{level-info levelTitle=level.levelTitle isPlaying=isPlaying isWinner=isWinner startPlaying="startPlaying"}}
           {{component (concat 'levels/' level.levelFile) currentLevel=currentLevel isPlaying=isPlaying advanceLevel="advanceLevel" }}
         </div>
       </div>

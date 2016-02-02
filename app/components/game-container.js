@@ -45,6 +45,7 @@ export default Ember.Component.extend({
     return {
       levelTitle,
       currentLevel: this.get('currentLevel'),
+      levelDisplay: this.get('currentLevel') + 1,
       levelFile: levelTitle.toLowerCase()
     };
   }),
@@ -77,9 +78,10 @@ export default Ember.Component.extend({
 
     advanceLevel() {
       this._stop();
-      this.incrementProperty('currentLevel');
-      if(this.get('currentLevel') === LEVELS.length) {
+      if(this.get('currentLevel') === LEVELS.length - 1) {
         this.set('isWinner', true);
+      } else {
+        this.incrementProperty('currentLevel');
       }
     },
 

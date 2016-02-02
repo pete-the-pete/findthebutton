@@ -1,8 +1,22 @@
-<div class="level-info">
-  {{#if attrs.isWinner}}
-    You Won!
-  {{else}}
-    {{levelName}}
-    {{countDownDisplay}}
-  {{/if}}
- </div>
+<div class="modal fade in" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Gaming!</h3>
+      </div>
+      <div class="modal-body">
+        {{#if attrs.isWinner}}
+          <h3>You Won!</h3>
+          <button>Play again!</button>
+          <p>or</p>
+          <p>{{#link-to "leaderboard"}}see how you rank{{/link-to}}</p>
+        {{else}}
+          {{attrs.levelTitle}}<br/>
+          Starting playing in {{countDownDisplay}}s
+        {{/if}}
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade in"></div>
