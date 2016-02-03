@@ -25,4 +25,14 @@ ul.nav.navbar-nav {
   border: solid 2px black;
   overflow: hidden;
   position: relative;
+  z-index: 5;
+}
+
+.level-info {
+  top: auto;
+}
+
+.right-rail {
+  position: relative;
+  z-index: -10;
 }

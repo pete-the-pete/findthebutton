@@ -71,6 +71,7 @@ export default Ember.Component.extend({
     this.setProperties({
       'hasStarted': false,
       'isPlaying': false,
+      'isWinner': false,
       'currentLevel': 0
     });
   },
@@ -96,7 +97,6 @@ export default Ember.Component.extend({
     playAgain() {
       //maybe do something else, like keep track of
       //how many rounds they have gone through
-      debugger;
       this._reset();
     },
 

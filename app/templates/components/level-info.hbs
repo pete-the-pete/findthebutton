@@ -1,4 +1,5 @@
-<div class="modal fade in" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block;">
+<div class="modal fade in level-info" id="myModal2" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="false" style="display: block;">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,7 +8,7 @@
       <div class="modal-body">
         {{#if attrs.isWinner}}
           <h3>You Won!</h3>
-          <button {{action attrs.playAgain}}>Play again!</button>
+          <button {{action "playAgain"}}>Play again!</button>
           <p>or</p>
           <p>{{#link-to "leaderboard"}}see how you rank{{/link-to}}</p>
         {{else}}

@@ -15,11 +15,19 @@ export default Ember.Component.extend({
         this.scheduleCountdown();
       } else {
         this.sendAction('startPlaying');
+        this.set('countDownDisplay', 3);
       }
     }, 1000);
   },
 
   didInsertElement() {
     this.scheduleCountdown();
+  },
+
+  actions: {
+    playAgain() {
+      this.attrs.playAgain();
+      this.scheduleCountdown();
+    }
   }
 });
