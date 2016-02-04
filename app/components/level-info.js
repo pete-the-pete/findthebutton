@@ -21,7 +21,7 @@ export default Ember.Component.extend({
   },
 
   didInsertElement() {
-    this.scheduleCountdown();
+    Ember.run.scheduleOnce('afterRender', this, this.scheduleCountdown);
   },
 
   actions: {
