@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  hideButton: true,
+  classNames: ['level'],
   classNameBindings: ['hideButton:hidden'],
 
   _stop: function() {
@@ -24,13 +24,22 @@ export default Ember.Component.extend({
   _move: function() {
     //move the button somewhere within the parent's
     //bounding rect so that it is still visible
-    let coordinates = Math.random();
+    let min = 10;
+    let pos = Math.floor(Math.random() * (this.max - min)) + min;
+    Ember.run(() => {
+      let b = this.element.querySelector('button');
+      b.style.top = pos+'px';
+      b.style.left = pos+'px';
+    });
+
   },
 
   _positionButton: function() {
     this._hide();
     this._move();
-    this._show();
+    if(this.iteration++ % 2) {
+      this._show();
+    }
     this.step();
   },
 
@@ -39,32 +48,30 @@ export default Ember.Component.extend({
 
     let currentLevel = this.get('currentLevell');
     let delay = currentLevel > 0 ? 1000 * (parseInt(this.get('currentLevel'), 10)/10) : 1000;
-    this.set('delay', delay);
+    this.delay = delay;
+    this.iteration = 1;
   },
 
   didInsertElement: function() {
     this._super(...arguments);
     let el = this.get('element');
     //get the parent boundingRect
-    this.set('parentRect', el.parentElement.getBoundingClientRect());
+    let parentRect = el.parentElement.getBoundingClientRect();
     //get the button boundingRect (NEEDS TO BE RETHOUGHT)
-    this.set('buttonRect', el.querySelector('button').getBoundingClientRect());
+    let buttonRect = el.querySelector('button').getBoundingClientRect();
+    this.max = parentRect.width - buttonRect.width;
   },
 
-  didRender: function() {
-    Ember.run.next(this, this._positionButton);
-  },
-
-  step: function() {
+  step: Ember.observer('hasStarted', function() {
     //as long as we're playing:
     if(this.get('isPlaying')) {
-      this.set('repositionTimer', Ember.run.later(this, function() {
+      this.repositionTimer = Ember.run.later(this, function() {
         this._positionButton();
-      }, this.get('delay')));
+      }, this.delay);
     } else {
       this._stop();
     }
-  },
+  }),
 
   actions: {
     advanceLevel() {

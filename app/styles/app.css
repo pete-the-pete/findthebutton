@@ -28,6 +28,13 @@ ul.nav.navbar-nav {
   z-index: 5;
 }
 
+.level button {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: -9999px; /* initially offscreen */
+}
+
 .level-info {
   top: auto;
 }
