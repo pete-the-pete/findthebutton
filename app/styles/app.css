@@ -35,8 +35,9 @@ ul.nav.navbar-nav {
   left: -9999px; /* initially offscreen */
 }
 
-.level-info {
-  top: auto;
+.modal.level-info {
+  position: absolute;
+  top: 20%;
 }
 
 .right-rail {
