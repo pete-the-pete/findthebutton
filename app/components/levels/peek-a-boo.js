@@ -1,11 +1,12 @@
 import Ember from 'ember';
+import BaseLeveL from './base-level';
 
-export default Ember.Component.extend({
+export default BaseLeveL.extend({
   classNames: ['level'],
   classNameBindings: ['hideButton:hidden'],
 
   _stop: function() {
-    Ember.run.cancel(this.get('repositionTimer'));
+    Ember.run.cancel(this.stepTimer);
   },
 
   _hide: function() {
@@ -43,6 +44,10 @@ export default Ember.Component.extend({
     this.step();
   },
 
+  _advanceLevel: function() {
+    this._stop();
+  },
+
   init() {
     this._super(...arguments);
 
@@ -65,7 +70,7 @@ export default Ember.Component.extend({
   step: Ember.observer('hasStarted', function() {
     //as long as we're playing:
     if(this.get('isPlaying')) {
-      this.repositionTimer = Ember.run.later(this, function() {
+      this.stepTimer = Ember.run.later(this, function() {
         this._positionButton();
       }, this.delay);
     } else {
@@ -73,10 +78,5 @@ export default Ember.Component.extend({
     }
   }),
 
-  actions: {
-    advanceLevel() {
-      this._stop();
-      this.sendAction('advanceLevel');
-    }
-  }
+
 });
