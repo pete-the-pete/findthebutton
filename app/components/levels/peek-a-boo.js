@@ -2,19 +2,8 @@ import Ember from 'ember';
 import BaseLeveL from './base-level';
 
 export default BaseLeveL.extend({
-  classNames: ['level'],
-  classNameBindings: ['hideButton:hidden'],
-
   _stop: function() {
     Ember.run.cancel(this.stepTimer);
-  },
-
-  _hide: function() {
-    this.set('hideButton', true);
-  },
-
-  _show: function() {
-    this.set('hideButton', false);
   },
 
   /**
@@ -32,7 +21,6 @@ export default BaseLeveL.extend({
       b.style.top = pos+'px';
       b.style.left = pos+'px';
     });
-
   },
 
   _positionButton: function() {
@@ -41,8 +29,19 @@ export default BaseLeveL.extend({
     if(this.iteration++ % 2) {
       this._show();
     }
-    this.step();
+    this._step();
   },
+
+  _step: Ember.observer('hasStarted', function() {
+    //as long as we're playing:
+    if(this.get('isPlaying')) {
+      this.stepTimer = Ember.run.later(this, function() {
+        this._positionButton();
+      }, this.delay);
+    } else {
+      this._stop();
+    }
+  }),
 
   _advanceLevel: function() {
     this._stop();
@@ -65,18 +64,6 @@ export default BaseLeveL.extend({
     //get the button boundingRect (NEEDS TO BE RETHOUGHT)
     let buttonRect = el.querySelector('button').getBoundingClientRect();
     this.max = parentRect.width - buttonRect.width;
-  },
-
-  step: Ember.observer('hasStarted', function() {
-    //as long as we're playing:
-    if(this.get('isPlaying')) {
-      this.stepTimer = Ember.run.later(this, function() {
-        this._positionButton();
-      }, this.delay);
-    } else {
-      this._stop();
-    }
-  }),
-
+  }
 
 });
