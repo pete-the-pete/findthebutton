@@ -12,8 +12,17 @@
       </div>
       <div class="col-md-10">
         <div id="game-board">
-          {{level-info levelTitle=level.levelTitle isPlaying=isPlaying isWinner=isWinner startPlaying="startPlaying" playAgain=(action 'playAgain')}}
-          {{component (concat 'levels/' level.levelFile) currentLevel=currentLevel isPlaying=isPlaying hasStarted=hasStarted advanceLevel="advanceLevel" }}
+          {{level-info
+            levelTitle=level.levelTitle
+            isPlaying=isPlaying
+            isWinner=isWinner
+            startPlaying="startPlaying"
+            playAgain=(action 'playAgain')}}
+          {{component (concat 'levels/' level.levelFile)
+            currentLevel=currentLevel
+            isPlaying=isPlaying
+            hasStarted=hasStarted
+            advanceLevel="advanceLevel" }}
         </div>
       </div>
     </div>

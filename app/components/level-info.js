@@ -20,8 +20,10 @@ export default Ember.Component.extend({
     }, 1000);
   },
 
-  didInsertElement() {
-    Ember.run.scheduleOnce('afterRender', this, this.scheduleCountdown);
+  didReceiveAttrs() {
+    if(!this.get('isPlaying') && !this.get('isWinner')) {
+      this.scheduleCountdown();
+    }
   },
 
   actions: {

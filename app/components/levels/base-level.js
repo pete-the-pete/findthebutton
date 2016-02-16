@@ -54,7 +54,6 @@ export default Ember.Component.extend({
 
   actions: {
     advanceLevel() {
-      debugger;
       this._advanceLevel();
       this.sendAction('advanceLevel');
     }
