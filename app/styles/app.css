@@ -35,6 +35,29 @@ ul.nav.navbar-nav {
   left: -9999px; /* initially offscreen */
 }
 
+.level.hot-cold button {
+  z-index: 10;
+}
+.level.hot-cold #heat-map {
+  background-color: black;
+  background-repeat: no-repeat;
+  /*the background property will need to be copied and modified in JS to change 'circle at X,Y' but keep the colors*/
+  background: radial-gradient(circle at 50px 50px,
+     red 0%,
+     orange 15%,
+     yellow 50%,
+     rgba(0,0,100, .5) 100%,
+     black);
+  width: 150%;
+  height: 150%;
+  position: absolute;
+  z-index: 100;
+}
+
+.level.hot-cold.shown button {
+  z-index: 150;
+}
+
 .modal.level-info {
   position: absolute;
   top: 20%;

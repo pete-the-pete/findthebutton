@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 const LEVELS = [
-  'Peek-a-Boo'
+  // 'Peek-a-Boo',
+  'Hot-Cold'
 ];
 
 /**
@@ -14,7 +15,7 @@ export default Ember.Component.extend({
   /**
    * Unecessary comment.
    */
-  currentLevel: 0,
+  currentLevel: Math.floor(Math.random() * (LEVELS.length)),
 
   /**
    * Signifies that the user has actually started playing a level,
