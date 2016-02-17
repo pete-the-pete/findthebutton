@@ -28,12 +28,7 @@ export default BaseLevel.extend({
     peek() {
       //show the button
       this._show();
-      this.stepTimer = Ember.run.later(this, () => {
-        //hide and move if they don't click on it in time
-        //this._hide();
-        //this._step();
-      }, this.delay);
-    },
+    }
 
   }
 });
