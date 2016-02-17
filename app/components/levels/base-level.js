@@ -35,8 +35,8 @@ export default Ember.Component.extend({
     let pos = Math.floor(Math.random() * (this.max - min)) + min;
     Ember.run(() => {
       let b = this.element.querySelector('button');
-      b.style.top = pos+'px';
-      b.style.left = pos+'px';
+      b.style.top = `${pos}px`;
+      b.style.left = `${pos}px`;
       moveDefer.resolve(pos);
     });
     return moveDefer.promise;
@@ -47,7 +47,7 @@ export default Ember.Component.extend({
     let el = this.get('element');
     //get the parent boundingRect
     this.parentRect = el.parentElement.getBoundingClientRect();
-    //get the button boundingRect (NEEDS TO BE RETHOUGHT)
+    //get the button boundingRect
     this.buttonRect = el.querySelector('button').getBoundingClientRect();
     this.max = this.parentRect.width - this.buttonRect.width;
   },

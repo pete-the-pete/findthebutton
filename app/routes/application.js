@@ -1,6 +1,5 @@
 // app/routes/application.js
 import Ember from 'ember';
-import CryptoJS from 'npm:crypto-js';
 
 export default Ember.Route.extend({
   beforeModel: function() {

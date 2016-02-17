@@ -32,6 +32,9 @@ ul.nav.navbar-nav {
   position: absolute;
   width: 100px;
   height: 100px;
+}
+
+.level .thebutton {
   left: -9999px; /* initially offscreen */
 }
 
@@ -54,7 +57,7 @@ ul.nav.navbar-nav {
   z-index: 100;
 }
 
-.level.hot-cold.shown button {
+.level.hot-cold.shown .thebutton {
   z-index: 150;
 }
 

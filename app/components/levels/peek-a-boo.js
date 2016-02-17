@@ -6,7 +6,6 @@ export default BaseLevel.extend({
   iteration: 1,
 
   _step: Ember.observer('hasStarted', function() {
-    //as long as we're playing:
     if(this.get('isPlaying')) {
       this.stepTimer = Ember.run.later(this, () => {
         this._hide();
@@ -24,9 +23,8 @@ export default BaseLevel.extend({
   init() {
     this._super(...arguments);
 
-    let currentLevel = this.get('currentLevell');
-    let delay = currentLevel > 0 ? 1000 * (parseInt(this.get('currentLevel'), 10)/10) : 1000;
-    this.delay = delay;
+    let currentLevel = this.get('currentLevel');
+    this.delay = currentLevel > 0 ? 1000 * (parseInt(currentLevel, 10)/10) : 1000;
   }
 
 });

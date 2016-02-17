@@ -1,8 +1,10 @@
 import Ember from 'ember';
+import ENV from '../config/environment';
 
 const LEVELS = [
   'Peek-a-Boo',
-  'Hot-Cold'
+  'Hot-Cold',
+  'Too-Many-Buttons'
 ];
 
 /**
@@ -11,6 +13,10 @@ const LEVELS = [
  * to save the score.
  */
 export default Ember.Component.extend({
+
+  inProduction: Ember.computed(function() {
+    return ENV.environment === 'production';
+  }),
 
   /**
    * Unecessary comment.
