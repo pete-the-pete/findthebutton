@@ -6,6 +6,8 @@ const LEVELS = [
   'Hot-Cold',
   'Too-Many-Buttons'
 ];
+const ROUNDS = 5;
+const LAST_LEVEL = (LEVELS.length * ROUNDS) - 1;
 
 /**
  * TLC That operates like a controller, there is very little
@@ -48,7 +50,7 @@ export default Ember.Component.extend({
    * glob of level data that updates based on the current level.
    */
   level: Ember.computed('currentLevel', function() {
-    let levelTitle = LEVELS[this.get('currentLevel')];
+    let levelTitle = LEVELS[this.get('currentLevel') % LEVELS.length];
     return {
       levelTitle,
       currentLevel: this.get('currentLevel'),
@@ -102,7 +104,7 @@ export default Ember.Component.extend({
 
     advanceLevel() {
       this._pause();
-      if(this.get('currentLevel') === LEVELS.length - 1) {
+      if(this.get('currentLevel') === LAST_LEVEL) {
         this._stop();
         this.set('isWinner', true);
       } else {
