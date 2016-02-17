@@ -5,9 +5,11 @@ export default BaseLevel.extend({
   classNames: ['peek-a-boo'],
   iteration: 1,
 
-  _step: Ember.observer('hasStarted', function() {
+  _step: Ember.on('didReceiveAttrs', function() {
+    this._super(...arguments);
+
     if(this.get('isPlaying')) {
-      this.stepTimer = Ember.run.later(this, () => {
+      this.stepTimer = Ember.run.later(this, function() {
         this._hide();
         this._positionButton();
         if(this.iteration++ % 2) {
@@ -20,7 +22,7 @@ export default BaseLevel.extend({
     }
   }),
 
-  init() {
+  init: function() {
     this._super(...arguments);
 
     let currentLevel = this.get('currentLevel');

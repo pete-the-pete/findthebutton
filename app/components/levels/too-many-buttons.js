@@ -8,7 +8,7 @@ export default BaseLevel.extend({
     this._super(...arguments);
 
     let currentLevel = this.get('currentLevel');
-    this.totalButtons = currentLevel > 0 ? 10 * (parseInt(currentLevel, 10)/10) : 10;
+    this.totalButtons = currentLevel > 0 ? 10 * (parseInt(currentLevel, 10)) : 10;
   },
 
   didInsertElement() {
@@ -20,11 +20,12 @@ export default BaseLevel.extend({
     let buttonTree = document.createElement('div');
     while(this.totalButtons--) {
       //create a button
-      let pos = Math.floor(Math.random() * (this.max - min)) + min;
       let button = document.createElement('button');
-      button.style.top = `${pos}px`;
-      button.style.left = `${pos}px`;
-      button.style.zIndex = `${pos}`;
+      let yPos = Math.floor(Math.random() * (this.max - min)) + min;
+      let xPos = Math.floor(Math.random() * (this.max - min)) + min;
+      button.style.top = `${yPos}px`;
+      button.style.left = `${xPos}px`;
+      button.style.zIndex = `${xPos+yPos}`;
       button.onclick = function() {
         this.parentElement.removeChild(this);
       };

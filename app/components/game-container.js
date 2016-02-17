@@ -74,6 +74,11 @@ export default Ember.Component.extend({
     this.get('stopwatch.timer').pause();
   },
 
+  _resume() {
+    this.set('isPlaying', true);
+    this.get('stopwatch.timer').resume();
+  },
+
   _reset() {
     this._stop();
     this.setProperties({
@@ -84,7 +89,11 @@ export default Ember.Component.extend({
 
   actions: {
     startPlaying() {
-      this._start();
+      if(this.get('hasStarted')) {
+        this._resume();
+      } else {
+        this._start();
+      }
     },
 
     pausePlaying() {
@@ -92,8 +101,9 @@ export default Ember.Component.extend({
     },
 
     advanceLevel() {
-      this._stop();
+      this._pause();
       if(this.get('currentLevel') === LEVELS.length - 1) {
+        this._stop();
         this.set('isWinner', true);
       } else {
         this.incrementProperty('currentLevel');

@@ -4,8 +4,7 @@ import BaseLevel from './base-level';
 export default BaseLevel.extend({
   classNames: ['hot-cold'],
 
-  _step: Ember.observer('hasStarted', function() {
-    //as long as we're playing:
+  didReceiveAttrs: function() {
     if(this.get('isPlaying')) {
       this._positionButton().then((buttonPos) => {
         let center = buttonPos + this.buttonRect.width/2;
@@ -13,7 +12,7 @@ export default BaseLevel.extend({
         this.heatMap.style.background = newBackground;
       });
     }
-  }),
+  },
 
   didInsertElement: function() {
     this._super(...arguments);
