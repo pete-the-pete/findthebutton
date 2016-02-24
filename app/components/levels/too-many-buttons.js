@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import BaseLevel from './base-level';
 
+const MODAL_MASK = 1040;
+
 export default BaseLevel.extend({
   classNames: ['too-many-buttons'],
 
@@ -8,7 +10,7 @@ export default BaseLevel.extend({
     this._super(...arguments);
 
     let currentLevel = this.get('currentLevel');
-    this.totalButtons = currentLevel > 0 ? 10 * (parseInt(currentLevel, 10)) : 10;
+    this.totalButtons = currentLevel > 0 ? 7 * currentLevel : 7;
   },
 
   didInsertElement() {
@@ -23,9 +25,10 @@ export default BaseLevel.extend({
       let button = document.createElement('button');
       let yPos = Math.floor(Math.random() * (this.max - min)) + min;
       let xPos = Math.floor(Math.random() * (this.max - min)) + min;
+      let zPos = Math.floor(Math.random() * MODAL_MASK);
       button.style.top = `${yPos}px`;
       button.style.left = `${xPos}px`;
-      button.style.zIndex = `${xPos+yPos}`;
+      button.style.zIndex = `${zPos}`;
       button.onclick = function() {
         this.parentElement.removeChild(this);
       };

@@ -26,7 +26,7 @@ export default BaseLevel.extend({
     this._super(...arguments);
 
     let currentLevel = this.get('currentLevel');
-    this.delay = currentLevel > 0 ? 1000 * (parseInt(currentLevel, 10)/10) : 1000;
+    this.delay = currentLevel > 0 ? (1000 * (currentLevel/10)) : 1000;
   }
 
 });

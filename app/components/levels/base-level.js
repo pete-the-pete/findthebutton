@@ -27,29 +27,47 @@ export default Ember.Component.extend({
    * the parent gets larger each level, and the button gets smaller
    * the button is square to make things easier
    */
-  _positionButton: function() {
+  _positionButton: function(max=this.max, min=10, excludeRange=undefined) {
     //move the button somewhere within the parent's
     //bounding rect so that it is still visible
     let moveDefer = Ember.RSVP.defer();
-    let min = 10;
-    let pos = Math.floor(Math.random() * (this.max - min)) + min;
+    let top = Math.floor(Math.random() * (max - min)) + min;
+    if(excludeRange) {
+      let [excludeMin, excludeMax] = excludeRange;
+      if(top > excludeMin && top < excludeMax) {
+        top = excludeMax;
+      }
+    }
+    let left = Math.floor(Math.random() * (max - min)) + min;
+    if(excludeRange) {
+      let [excludeMin, excludeMax] = excludeRange;
+      if(left > excludeMin && left < excludeMax) {
+        left = excludeMax;
+      }
+    }
+
     Ember.run(() => {
       let b = this.element.querySelector('button');
-      b.style.top = `${pos}px`;
-      b.style.left = `${pos}px`;
-      moveDefer.resolve(pos);
+      b.style.top = `${top}px`;
+      b.style.left = `${left}px`;
+      moveDefer.resolve({top, left});
     });
     return moveDefer.promise;
   },
 
-  didInsertElement: function() {
-    this._super(...arguments);
+  _determineBoundaries: function() {
     let el = this.get('element');
     //get the parent boundingRect
-    this.parentRect = el.parentElement.getBoundingClientRect();
+    this.parentRect = el.getBoundingClientRect();
     //get the button boundingRect
     this.buttonRect = el.querySelector('button').getBoundingClientRect();
     this.max = this.parentRect.width - this.buttonRect.width;
+  },
+
+  didInsertElement: function() {
+    this._super(...arguments);
+
+    this._determineBoundaries();
   },
 
   actions: {
