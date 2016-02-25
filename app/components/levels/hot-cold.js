@@ -13,20 +13,25 @@ export default BaseLevel.extend({
     let currentLevel = this.get('currentLevel');
     let dimensions = currentLevel > 0 ? (100 * (1+(currentLevel/10))) : 100;
 
-    el.style.width = `${dimensions}%`;
-    el.style.height = `${dimensions}%`;
-    this.heatMap = this.get('element').querySelector('#heat-map');
-    this.computedStyle = window.getComputedStyle(this.heatMap);
+    Ember.run(() => {
+      el.style.width = `${dimensions}%`;
+      el.style.height = `${dimensions}%`;
+      this.heatMap = this.get('element').querySelector('#heat-map');
+      this.computedStyle = window.getComputedStyle(this.heatMap);
 
-    let excludeRange = [
-       dimensions/2 - currentLevel * this.buttonRect.width,
-       dimensions/2 + currentLevel * this.buttonRect.width
-    ];
+      let excludeRange = [
+        dimensions/2 - currentLevel * this.buttonRect.width,
+        dimensions/2 + currentLevel * this.buttonRect.width
+      ];
 
-    this._positionButton(dimensions, this.buttonRect.width, excludeRange).then((buttonPos) => {
-      let center = buttonPos.top + this.buttonRect.width/2;
-      let newBackground = this.computedStyle.background.replace(/circle at ([^,]*),/, `circle at ${center}px ${center}px,`);
-      this.heatMap.style.background = newBackground;
+      this._positionButton(parseInt(this.computedStyle.width, 10), this.buttonRect.width, excludeRange).then((buttonPos) => {
+        Ember.run(() => {
+          let yCenter = buttonPos.top + this.buttonRect.height/2;
+          let xCenter = buttonPos.left + this.buttonRect.width/2;
+          let newBackground = this.computedStyle.background.replace(/circle at ([^,]*),/, `circle at ${xCenter}px ${yCenter}px,`);
+          this.heatMap.style.background = newBackground;
+        });
+      });
     });
   },
 
@@ -37,12 +42,8 @@ export default BaseLevel.extend({
       let el = this.get('element');
       //scroll to the center of the level
       Ember.run.next(() => {
-        console.debug(el.scrollTop);
-        console.debug(el.scrollHeight);
-        console.debug(Math.floor(el.scrollHeight/2));
-        el.parentNode.scrollTop = 50;//Math.floor(el.scrollHeight/2);
-        el.parentNode.scrollLeft = 50;//Math.floor(el.scrollWidth/2);
-        console.debug(el.scrollTop);
+        el.parentNode.scrollTop = Math.floor(el.scrollHeight/2);
+        el.parentNode.scrollLeft = Math.floor(el.scrollWidth/2);
       });
     }
   },
