@@ -20,6 +20,12 @@ export default Ember.Component.extend({
 
   _advanceLevel: function() {
     this._stop();
+    //reset the game board
+    Ember.run(() => {
+      let el = this.get('element');
+      el.style.width = `100%`;
+      el.style.height = `100%`;
+    });
   },
 
   /**
@@ -66,7 +72,6 @@ export default Ember.Component.extend({
 
   didInsertElement: function() {
     this._super(...arguments);
-
     this._determineBoundaries();
   },
 

@@ -4,7 +4,9 @@ import BaseLevel from './base-level';
 export default BaseLevel.extend({
   classNames: ['hot-cold'],
 
-  didInsertElement: function() {
+  initialRender: true,
+
+  didInsertElement() {
     this._super(...arguments);
 
     let el = this.get('element');
@@ -26,6 +28,23 @@ export default BaseLevel.extend({
       let newBackground = this.computedStyle.background.replace(/circle at ([^,]*),/, `circle at ${center}px ${center}px,`);
       this.heatMap.style.background = newBackground;
     });
+  },
+
+  didRender() {
+    if(this.initialRender) {
+      this.initialRender = false;
+
+      let el = this.get('element');
+      //scroll to the center of the level
+      Ember.run.next(() => {
+        console.debug(el.scrollTop);
+        console.debug(el.scrollHeight);
+        console.debug(Math.floor(el.scrollHeight/2));
+        el.parentNode.scrollTop = 50;//Math.floor(el.scrollHeight/2);
+        el.parentNode.scrollLeft = 50;//Math.floor(el.scrollWidth/2);
+        console.debug(el.scrollTop);
+      });
+    }
   },
 
   actions: {
