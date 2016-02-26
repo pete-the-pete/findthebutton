@@ -34,6 +34,10 @@ ul.nav.navbar-nav {
   height: 100px;
 }
 
+.level .hide-button button {
+  visibility: hidden;
+}
+
 .level .thebutton {
   background-color: pink;
   left: -9999px; /* initially offscreen */
@@ -58,7 +62,7 @@ ul.nav.navbar-nav {
   z-index: 100;
 }
 
-.level.hot-cold.shown .thebutton {
+.level.hot-cold.show-button .thebutton {
   z-index: 150;
 }
 

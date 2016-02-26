@@ -2,7 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['level'],
-  classNameBindings: ['hideButton:hidden','showButton:shown'],
+  classNameBindings: ['hideButton','showButton'],
+  initialRender: true,
 
   _hide: function() {
     this.set('hideButton', true);
@@ -41,14 +42,14 @@ export default Ember.Component.extend({
     if(excludeRange) {
       let [excludeMin, excludeMax] = excludeRange;
       if(top > excludeMin && top < excludeMax) {
-        top = excludeMax;
+        top = Date.now() % 2 ? excludeMax : excludeMin;
       }
     }
     let left = Math.floor(Math.random() * (max - min)) + min;
     if(excludeRange) {
       let [excludeMin, excludeMax] = excludeRange;
       if(left > excludeMin && left < excludeMax) {
-        left = excludeMax;
+        left = Date.now() % 2 ? excludeMax : excludeMin;
       }
     }
 

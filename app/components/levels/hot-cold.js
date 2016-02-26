@@ -4,9 +4,11 @@ import BaseLevel from './base-level';
 export default BaseLevel.extend({
   classNames: ['hot-cold'],
 
-  initialRender: true,
+  willRender() {
+    this._hide();
+  },
 
-  didInsertElement() {
+  didRender() {
     this._super(...arguments);
 
     let el = this.get('element');
@@ -20,9 +22,10 @@ export default BaseLevel.extend({
       this.computedStyle = window.getComputedStyle(this.heatMap);
 
       let excludeRange = [
-        dimensions/2 - currentLevel * this.buttonRect.width,
-        dimensions/2 + currentLevel * this.buttonRect.width
+        dimensions/2 - (currentLevel * this.buttonRect.width),
+        dimensions/2 + (currentLevel * this.buttonRect.width)
       ];
+      console.log(excludeRange);
 
       this._positionButton(parseInt(this.computedStyle.width, 10), this.buttonRect.width, excludeRange).then((buttonPos) => {
         Ember.run(() => {
@@ -33,19 +36,17 @@ export default BaseLevel.extend({
         });
       });
     });
-  },
 
-  didRender() {
-    if(this.initialRender) {
-      this.initialRender = false;
+    // if(this.initialRender) {
+    //   this.initialRender = false;
 
-      let el = this.get('element');
-      //scroll to the center of the level
-      Ember.run.next(() => {
-        el.parentNode.scrollTop = Math.floor(el.scrollHeight/2);
-        el.parentNode.scrollLeft = Math.floor(el.scrollWidth/2);
-      });
-    }
+    //   let el = this.get('element');
+    //   //scroll to the center of the level
+    //   Ember.run.next(() => {
+    //     el.parentNode.scrollTop = Math.floor(el.scrollHeight/2);
+    //     el.parentNode.scrollLeft = Math.floor(el.scrollWidth/2);
+    //   });
+    // }
   },
 
   actions: {
