@@ -28,6 +28,11 @@ ul.nav.navbar-nav {
   z-index: 5;
 }
 
+.level {
+  width: inherit;
+  height: inherit;
+}
+
 .level button {
   position: absolute;
   width: 100px;
