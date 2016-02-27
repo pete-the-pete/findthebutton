@@ -20,9 +20,7 @@
             playAgain=(action 'playAgain')}}
           {{component (concat 'levels/' level.levelFile)
             currentLevel=currentLevel
-            isPlaying=isPlaying
-            hasStarted=hasStarted
-            advanceLevel="advanceLevel" }}
+            foundButton=(action "foundButton")}}
         </div>
       </div>
     </div>

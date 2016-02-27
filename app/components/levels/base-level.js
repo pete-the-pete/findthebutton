@@ -19,15 +19,10 @@ export default Ember.Component.extend({
     Ember.run.cancel(this.stepTimer);
   },
 
-  _advanceLevel: function() {
+  _foundButton: function() {
     this._stop();
     //reset the game board
-    Ember.run(() => {
-      let el = this.get('element');
-      el.style.width = `100%`;
-      el.style.height = `100%`;
-      this.initialRender = true;
-    });
+    this.initialRender = true;
   },
 
   /**
@@ -78,9 +73,9 @@ export default Ember.Component.extend({
   },
 
   actions: {
-    advanceLevel() {
-      this._advanceLevel();
-      this.sendAction('advanceLevel');
+    foundButton() {
+      this._foundButton();
+      this.sendAction('foundButton');
     }
   }
 });

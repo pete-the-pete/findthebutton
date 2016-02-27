@@ -15,6 +15,7 @@ const LAST_LEVEL = (LEVELS.length * ROUNDS) - 1;
  * to save the score.
  */
 export default Ember.Component.extend({
+  classNameBindings: ['isPlaying:playing'],
 
   inProduction: Ember.computed(function() {
     return ENV.environment === 'production';
@@ -92,6 +93,7 @@ export default Ember.Component.extend({
   actions: {
     startPlaying() {
       if(this.get('hasStarted')) {
+        this.incrementProperty('currentLevel');
         this._resume();
       } else {
         this._start();
@@ -102,13 +104,11 @@ export default Ember.Component.extend({
       this._pause();
     },
 
-    advanceLevel() {
+    foundButton() {
       this._pause();
       if(this.get('currentLevel') === LAST_LEVEL) {
         this._stop();
         this.set('isWinner', true);
-      } else {
-        this.incrementProperty('currentLevel');
       }
     },
 

@@ -23,9 +23,13 @@ ul.nav.navbar-nav {
   height: 600px;
   width: 100%;
   border: solid 2px black;
-  overflow: scroll;
+  overflow: hidden;
   position: relative;
   z-index: 5;
+}
+
+.playing #game-board {
+  overflow: auto;
 }
 
 .level {
@@ -56,8 +60,8 @@ ul.nav.navbar-nav {
   background-repeat: no-repeat;
   /*the background property will need to be copied and modified in JS to change 'circle at X,Y' but keep the colors*/
   background: radial-gradient(circle at 50px 50px,
-     red 0%,
-     orange 15%,
+     red 1%,
+     orange 5%,
      yellow 50%,
      rgba(0,0,100, .5) 100%,
      black);
