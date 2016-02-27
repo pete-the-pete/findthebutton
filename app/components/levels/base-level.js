@@ -26,6 +26,7 @@ export default Ember.Component.extend({
       let el = this.get('element');
       el.style.width = `100%`;
       el.style.height = `100%`;
+      this.initialRender = true;
     });
   },
 
@@ -34,18 +35,18 @@ export default Ember.Component.extend({
    * the parent gets larger each level, and the button gets smaller
    * the button is square to make things easier
    */
-  _positionButton: function(max=this.max, min=10, excludeRange=undefined) {
+  _positionButton: function(maximums, min=10, excludeRange=undefined) {
     //move the button somewhere within the parent's
     //bounding rect so that it is still visible
     let moveDefer = Ember.RSVP.defer();
-    let top = Math.floor(Math.random() * (max - min)) + min;
+    let top = Math.floor(Math.random() * (maximums.height - min)) + min;
     if(excludeRange) {
       let [excludeMin, excludeMax] = excludeRange;
       if(top > excludeMin && top < excludeMax) {
         top = Date.now() % 2 ? excludeMax : excludeMin;
       }
     }
-    let left = Math.floor(Math.random() * (max - min)) + min;
+    let left = Math.floor(Math.random() * (maximums.width - min)) + min;
     if(excludeRange) {
       let [excludeMin, excludeMax] = excludeRange;
       if(left > excludeMin && left < excludeMax) {
