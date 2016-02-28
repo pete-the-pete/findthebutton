@@ -13,10 +13,11 @@ export default BaseLevel.extend({
     this.totalButtons = currentLevel > 0 ? 7 * currentLevel : 7;
   },
 
-  didInsertElement() {
+  didRender() {
     this._super(...arguments);
     //position the real button randomly
-    this._positionButton();
+    let maximums = this.get('element').getBoundingClientRect();
+    this._positionButton(maximums);
     //make a bunch of other buttons that remove themselves when clicked
     let min = 10;
     let buttonTree = document.createElement('div');

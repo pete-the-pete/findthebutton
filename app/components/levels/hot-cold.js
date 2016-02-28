@@ -31,7 +31,6 @@ export default BaseLevel.extend({
         height: newDimensions.height - bHeight,
         width: newDimensions.width - bWidth
       };
-      console.log(excludeRange, maximums);
 
       let heatMap = this.get('element').querySelector('#heat-map');
       let computedStyle = window.getComputedStyle(heatMap);
