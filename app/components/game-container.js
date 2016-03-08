@@ -4,7 +4,8 @@ import ENV from '../config/environment';
 const LEVELS = [
   'Peek-a-Boo',
   'Hot-Cold',
-  'Too-Many-Buttons'
+  'Too-Many-Buttons',
+  'Camo-Button'
 ];
 const ROUNDS = 5;
 const LAST_LEVEL = (LEVELS.length * ROUNDS) - 1;

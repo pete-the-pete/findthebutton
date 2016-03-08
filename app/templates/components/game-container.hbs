@@ -18,9 +18,11 @@
             isWinner=isWinner
             startPlaying="startPlaying"
             playAgain=(action 'playAgain')}}
-          {{component (concat 'levels/' level.levelFile)
+          {{#component (concat 'levels/' level.levelFile)
             currentLevel=currentLevel
             foundButton=(action "foundButton")}}
+            {{partial 'partials/thebutton'}}
+          {{/component}}
         </div>
       </div>
     </div>

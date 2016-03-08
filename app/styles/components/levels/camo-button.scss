@@ -1,0 +1,18 @@
+.level.camo-button {
+  &.camo-1 {
+    background-image: url('../images/backgrounds/1.jpg');
+    .thebutton {
+      -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 56%);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 56%);
+    }
+  }
+
+  &.camo-2 {
+    background-image: url('../images/backgrounds/2.jpg');
+    .thebutton {
+      -webkit-clip-path: polygon(50% 0%, 0 100%, 67% 50%);
+      clip-path: polygon(50% 0%, 0 100%, 67% 50%);
+      opacity: .8;
+    }
+  }
+}
