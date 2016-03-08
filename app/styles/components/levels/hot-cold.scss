@@ -1,0 +1,25 @@
+.level.hot-cold {
+  button {
+    z-index: 10;
+  }
+
+  #heat-map {
+    background-color: black;
+    background-repeat: no-repeat;
+    /*the background property will need to be copied and modified in JS to change 'circle at X,Y' but keep the colors*/
+    background: radial-gradient(circle at 50px 50px,
+      red 1%,
+      orange 5%,
+      yellow 50%,
+      rgba(0,0,100, .5) 100%,
+      black);
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    z-index: 100;
+  }
+
+  &.show-button .thebutton {
+    z-index: 150;
+  }
+}

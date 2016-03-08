@@ -1,0 +1,18 @@
+.level {
+  width: inherit;
+  height: inherit;
+  button {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+  }
+
+  &.hide-button button {
+    visibility: hidden;
+  }
+
+  .thebutton {
+    background-color: pink;
+    left: -9999px; /* initially offscreen */
+  }
+}

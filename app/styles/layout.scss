@@ -1,0 +1,19 @@
+html,body {
+  height: 100%;
+}
+
+/* the theme doesn't seem to be included */
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
+/* apply 'pull-right' since we can't do it in the template */
+ul.nav.navbar-nav {
+  float: right !important;
+}
+
+.right-rail {
+  position: relative;
+  z-index: -10;
+}
