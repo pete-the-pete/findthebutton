@@ -1,4 +1,11 @@
 .level.camo-button {
+  background-size: cover;
+
+  .thebutton {
+    height: 150px;
+    width: 150px;
+  }
+
   &.camo-1 {
     background-image: url('../images/backgrounds/1.jpg');
     .thebutton {
@@ -13,6 +20,33 @@
       -webkit-clip-path: polygon(50% 0%, 0 100%, 67% 50%);
       clip-path: polygon(50% 0%, 0 100%, 67% 50%);
       opacity: .8;
+    }
+  }
+
+  &.camo-3 {
+    background-image: url('../images/backgrounds/3.jpg');
+    .thebutton {
+      -webkit-clip-path: polygon(50% 0%, 0 100%, 67% 50%);
+      clip-path: polygon(50% 0%, 0 100%, 67% 50%);
+      opacity: .6;
+    }
+  }
+
+  &.camo-4 {
+    background-image: url('../images/backgrounds/4.jpg');
+    .thebutton {
+      -webkit-clip-path: polygon(50% 0%, 0 100%, 67% 50%);
+      clip-path: polygon(50% 0%, 0 100%, 67% 50%);
+      opacity: .4;
+    }
+  }
+
+  &.camo-5 {
+    background-image: url('../images/backgrounds/5.jpg');
+    .thebutton {
+      -webkit-clip-path: polygon(50% 0%, 0 100%, 67% 50%);
+      clip-path: polygon(50% 0%, 0 100%, 67% 50%);
+      opacity: .2;
     }
   }
 }
