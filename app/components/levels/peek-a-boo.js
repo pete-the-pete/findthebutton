@@ -10,12 +10,14 @@ export default BaseLevel.extend({
     let maximums = this.get('element').getBoundingClientRect();
 
     this.stepTimer = Ember.run.later(this, function() {
-      this._hide();
-      this._positionButton(maximums);
-      if(this.iteration++ % 2) {
-        this._show();
+      if(!this.get('isDestroying') && !this.get('isDestroyed')) {
+        this._hide();
+        this._positionButton(maximums);
+        if(this.iteration++ % 2) {
+          this._show();
+        }
+        this._step();
       }
-      this._step();
     }, this.delay);
   }),
 
@@ -23,7 +25,7 @@ export default BaseLevel.extend({
     this._super(...arguments);
 
     let currentLevel = this.get('currentLevel');
-    this.delay = currentLevel > 0 ? (1000 * (currentLevel/10)) : 1000;
+    this.delay = currentLevel > 0 ? (1000 * (1/Math.ceil(currentLevel/5))) : 1000;
   },
 
   actions: {

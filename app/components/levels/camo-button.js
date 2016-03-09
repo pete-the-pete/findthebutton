@@ -8,5 +8,10 @@ export default BaseLevel.extend({
   init() {
     this._super(...arguments);
     this.set('camoLevel', `camo-${Math.floor(this.get('attrs.currentLevel.value') / 5) + 1}`);
+  },
+
+  didRender() {
+    this._super(...arguments);
+    this._positionButton(this.get('element').getBoundingClientRect());
   }
 });
