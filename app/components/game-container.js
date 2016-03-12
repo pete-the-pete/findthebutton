@@ -2,9 +2,9 @@ import Ember from 'ember';
 import ENV from '../config/environment';
 
 const LEVELS = [
-  'Peek-a-Boo',
-  'Hot-Cold',
-  'Too-Many-Buttons',
+  // 'Peek-a-Boo',
+  // 'Hot-Cold',
+  // 'Too-Many-Buttons',
   'Camo-Button'
 ];
 const ROUNDS = 5;

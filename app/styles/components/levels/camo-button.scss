@@ -1,52 +1,77 @@
+$button-dim: 100px;
+
 .level.camo-button {
   background-size: cover;
 
   .thebutton {
-    height: 150px;
-    width: 150px;
+    height: $button-dim;
+    width: $button-dim;
+    background: transparent;
+    opacity: .8;
+    font-size: 80%;
+    border-radius: 5%;
+    border: 3px solid rgba(155, 155, 155, 0.9);
+    overflow: hidden;
+
+    /* https://css-tricks.com/transparent-borders-with-background-clip/ */
+    -moz-background-clip: border;     /* Firefox 3.6 */
+    -webkit-background-clip: border;  /* Safari 4? Chrome 6? */
+    background-clip: border-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+
+    -moz-background-clip: padding;     /* Firefox 3.6 */
+    -webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+    background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+
+    -moz-background-clip: content;     /* Firefox 3.6 */
+    -webkit-background-clip: content;  /* Safari 4? Chrome 6? */
+    background-clip: content-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &.camo-1 {
     background-image: url('../images/backgrounds/1.jpg');
-    .thebutton {
-      -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 56%);
-      clip-path: polygon(50% 0%, 0% 100%, 100% 56%);
-    }
   }
 
   &.camo-2 {
     background-image: url('../images/backgrounds/2.jpg');
     .thebutton {
-      -webkit-clip-path: polygon(50% 0%, 0 100%, 67% 50%);
-      clip-path: polygon(50% 0%, 0 100%, 67% 50%);
-      opacity: .8;
+      height: $button-dim * .8;
+      width: $button-dim * .8;
+      border-color: rgba(100, 100, 155, 0.6);
     }
   }
 
   &.camo-3 {
     background-image: url('../images/backgrounds/3.jpg');
     .thebutton {
-      -webkit-clip-path: polygon(50% 0%, 0 100%, 67% 50%);
-      clip-path: polygon(50% 0%, 0 100%, 67% 50%);
-      opacity: .6;
+      height: $button-dim * .6;
+      width: $button-dim * .6;
+      border-color: rgba(100, 100, 155, 0.4);
+      font-size: 60%;
     }
   }
 
   &.camo-4 {
     background-image: url('../images/backgrounds/4.jpg');
     .thebutton {
-      -webkit-clip-path: polygon(50% 0%, 0 100%, 67% 50%);
-      clip-path: polygon(50% 0%, 0 100%, 67% 50%);
-      opacity: .4;
+      height: $button-dim * .4;
+      width: $button-dim * .4;
+      border-color: rgba(100, 100, 155, 0.2);
+      font-size: 30%;
     }
   }
 
   &.camo-5 {
     background-image: url('../images/backgrounds/5.jpg');
+    cursor: none;
     .thebutton {
-      -webkit-clip-path: polygon(50% 0%, 0 100%, 67% 50%);
-      clip-path: polygon(50% 0%, 0 100%, 67% 50%);
-      opacity: .2;
+      height: $button-dim * .2;
+      width: $button-dim * .2;
+      border-color: rgba(100, 100, 155, 0.1);
+      font-size: 5%;
     }
   }
 }

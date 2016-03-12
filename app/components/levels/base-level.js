@@ -34,14 +34,14 @@ export default Ember.Component.extend({
     //move the button somewhere within the parent's
     //bounding rect so that it is still visible
     let moveDefer = Ember.RSVP.defer();
-    let top = Math.floor(Math.random() * (maximums.height - min)) + min;
+    let top = Math.floor(Math.random() * (maximums.height - this.max - min)) + min;
     if(excludeRange) {
       let [excludeMin, excludeMax] = excludeRange;
       if(top > excludeMin && top < excludeMax) {
         top = Date.now() % 2 ? excludeMax : excludeMin;
       }
     }
-    let left = Math.floor(Math.random() * (maximums.width - min)) + min;
+    let left = Math.floor(Math.random() * (maximums.width - this.max - min)) + min;
     if(excludeRange) {
       let [excludeMin, excludeMax] = excludeRange;
       if(left > excludeMin && left < excludeMax) {
@@ -63,7 +63,7 @@ export default Ember.Component.extend({
     //get the parent boundingRect
     this.parentRect = el.getBoundingClientRect();
     //get the button boundingRect
-    this.buttonRect = el.querySelector('button').getBoundingClientRect();
+    this.buttonRect = el.querySelector('.thebutton').getBoundingClientRect();
     this.max = this.parentRect.width - this.buttonRect.width;
   },
 
