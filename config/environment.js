@@ -17,6 +17,9 @@ module.exports = function(environment) {
     },
     baseURL: '/',
     locationType: 'auto',
+    serviceWorker: {
+      enabled: true
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -36,6 +39,11 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.serviceWorker = {
+      skipWaiting: true,
+      debug: true
+    }
+
   }
 
   if (environment === 'test') {

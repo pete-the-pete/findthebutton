@@ -91,6 +91,28 @@ export default Ember.Component.extend({
     });
   },
 
+  didInsertElement() {
+    this._super(...arguments);
+    let rightRail = this.get('element').querySelector('.right-rail');
+    if(rightRail) {
+      Ember.run(() => {
+        let script= document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+        rightRail.innerHTML = `
+          <!-- RightRail -->
+          <ins class="adsbygoogle"
+              style="display:inline-block;width:300px;height:600px"
+              data-ad-client="ca-pub-2811298199735743"
+              data-ad-slot="3746614119"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>`;
+      });
+    }
+  },
+
   actions: {
     startPlaying() {
       if(this.get('hasStarted')) {
