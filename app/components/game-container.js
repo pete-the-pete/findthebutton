@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import ENV from '../config/environment';
 
 const LEVELS = [
   // 'Peek-a-Boo',
@@ -17,10 +16,6 @@ const LAST_LEVEL = (LEVELS.length * ROUNDS) - 1;
  */
 export default Ember.Component.extend({
   classNameBindings: ['isPlaying:playing'],
-
-  inProduction: Ember.computed(function() {
-    return ENV.environment === 'production';
-  }),
 
   /**
    * Unecessary comment.

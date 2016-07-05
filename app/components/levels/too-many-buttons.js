@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import BaseLevel from './base-level';
 
 const MODAL_MASK = 1040;

@@ -7,19 +7,31 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{content-for 'head'}}
+    {{content-for "head"}}
 
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/findthebutton.css">
 
-    {{content-for 'head-footer'}}
+    {{content-for "head-footer"}}
   </head>
   <body>
-    {{content-for 'body'}}
+    {{content-for "body"}}
 
     <script src="assets/vendor.js"></script>
     <script src="assets/findthebutton.js"></script>
 
-    {{content-for 'body-footer'}}
+    <div class="col-md-2 hidden-md text-centered right-rail">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- RightRail -->
+      <ins class="adsbygoogle"
+          style="display:inline-block;width:300px;height:600px"
+          data-ad-client="ca-pub-2811298199735743"
+          data-ad-slot="3746614119"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    {{content-for "body-footer"}}
   </body>
 </html>

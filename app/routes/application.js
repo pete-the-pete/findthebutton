@@ -41,8 +41,6 @@ export default Ember.Route.extend({
           }
           this.replaceWith(redirect);
         });
-      }, function(error) {
-        // notify the user that something went wrong
       });
     },
 

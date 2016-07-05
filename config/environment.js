@@ -4,19 +4,17 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'findthebutton',
     environment: environment,
-    contentSecurityPolicy: {
-      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' *.firebaseio.com *.facebook.net *.facebook.com pagead2.googlesyndication.com",
-      'connect-src': "'self' auth.firebase.com wss://*.firebaseio.com pagead2.googlesyndication.com",
-      'frame-src': "'self' *.firebaseio.com *.facebook.com pagead2.googlesyndication.com *.doubleclick.net",
-      'style-src': "'self' 'unsafe-inline'",
-      'img-src': "'self' *.fbcdn.net",
+    baseURL: '/',
+    locationType: 'auto',
+    firebase: {
+      apiKey: "AIzaSyCZWIVAAhmTrf8Dd3bW2ujAOk6RoXLp1-I",
+      authDomain: "findthebutton.firebaseapp.com",
+      databaseURL: "https://findthebutton.firebaseio.com",
+      storageBucket: ""
     },
-    firebase: 'https://findthebutton.firebaseio.com/',
     torii: {
       sessionServiceName: 'session'
     },
-    baseURL: '/',
-    locationType: 'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
