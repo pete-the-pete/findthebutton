@@ -6,20 +6,12 @@ moduleForComponent('levels/camo-button', 'Integration | Component | levels/camo 
 });
 
 test('it renders', function(assert) {
-  
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
 
-  this.render(hbs`{{levels/camo-button}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:" + EOL +
   this.render(hbs`
     {{#levels/camo-button}}
-      template block text
+      {{partial 'partials/thebutton'}}
     {{/levels/camo-button}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.notEqual(this.$().text().trim(), '');
 });

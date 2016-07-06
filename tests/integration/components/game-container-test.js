@@ -6,20 +6,12 @@ moduleForComponent('game-container', 'Integration | Component | game container',
 });
 
 test('it renders', function(assert) {
-  
+
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
 
   this.render(hbs`{{game-container}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:" + EOL +
-  this.render(hbs`
-    {{#game-container}}
-      template block text
-    {{/game-container}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  //at least something shows up
+  assert.notEqual(this.$().text().trim(), '');
 });

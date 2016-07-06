@@ -6,20 +6,12 @@ moduleForComponent('levels/peek-a-boo', 'Integration | Component | levels/peek a
 });
 
 test('it renders', function(assert) {
-  
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
 
-  this.render(hbs`{{levels/peek-a-boo}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:" + EOL +
   this.render(hbs`
-    {{#levels/peek-a-boo}}
-      template block text
-    {{/levels/peek-a-boo}}
+    {{#levels/camo-button}}
+      {{partial 'partials/thebutton'}}
+    {{/levels/camo-button}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.notEqual(this.$().text().trim(), '');
 });

@@ -6,20 +6,11 @@ moduleForComponent('levels/too-many-buttons', 'Integration | Component | levels/
 });
 
 test('it renders', function(assert) {
-  
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
-
-  this.render(hbs`{{levels/too-many-buttons}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:" + EOL +
   this.render(hbs`
-    {{#levels/too-many-buttons}}
-      template block text
-    {{/levels/too-many-buttons}}
+    {{#levels/camo-button}}
+      {{partial 'partials/thebutton'}}
+    {{/levels/camo-button}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.notEqual(this.$().text().trim(), '');
 });

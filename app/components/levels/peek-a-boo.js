@@ -5,7 +5,7 @@ export default BaseLevel.extend({
   classNames: ['peek-a-boo'],
   iteration: 1,
 
-  _step: Ember.on('didInsertElement', function() {
+  _step: Ember.on('didRender', function() {
     this._super(...arguments);
     let maximums = this.get('element').getBoundingClientRect();
 

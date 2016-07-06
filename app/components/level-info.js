@@ -12,12 +12,14 @@ export default Ember.Component.extend({
 
   scheduleCountdown: function() {
     Ember.run.later(() => {
-      this.decrementProperty('countDownDisplay');
-      if(this.get('countDownDisplay')) {
-        this.scheduleCountdown();
-      } else {
-        this.sendAction('startPlaying');
-        this.set('countDownDisplay', INTITIAL_COUNTDOWN);
+      if(!this.isDestroying && !this.isDestroyed) {
+        this.decrementProperty('countDownDisplay');
+        if(this.get('countDownDisplay')) {
+          this.scheduleCountdown();
+        } else {
+          this.sendAction('startPlaying');
+          this.set('countDownDisplay', INTITIAL_COUNTDOWN);
+        }
       }
     }, 1000);
   },

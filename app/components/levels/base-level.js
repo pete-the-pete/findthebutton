@@ -67,7 +67,7 @@ export default Ember.Component.extend({
     this.max = this.parentRect.width - this.buttonRect.width;
   },
 
-  didInsertElement: function() {
+  didRender: function() {
     this._super(...arguments);
     this._determineBoundaries();
   },

@@ -14,24 +14,15 @@
 
     {{content-for "head-footer"}}
   </head>
-  <body>
-    {{content-for "body"}}
+  <body class="container">
+    <div class="row">
+      {{content-for "body"}}
 
-    <script src="assets/vendor.js"></script>
-    <script src="assets/findthebutton.js"></script>
+      {{content-for "body-footer"}}
 
-    <div class="col-md-2 hidden-md text-centered right-rail">
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- RightRail -->
-      <ins class="adsbygoogle"
-          style="display:inline-block;width:300px;height:600px"
-          data-ad-client="ca-pub-2811298199735743"
-          data-ad-slot="3746614119"></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+      <script src="assets/vendor.js"></script>
+      <script src="assets/findthebutton.js"></script>
+
     </div>
-
-    {{content-for "body-footer"}}
   </body>
 </html>

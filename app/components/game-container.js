@@ -86,6 +86,27 @@ export default Ember.Component.extend({
     });
   },
 
+  init() {
+    this._super(...arguments);
+  },
+
+  didRender() {
+    this._super(...arguments);
+    //show the ads box
+    Ember.run.scheduleOnce('afterRender', () => {
+      this.element.querySelector('#ads').innerHTML = `
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- RightRail -->
+          <ins class="adsbygoogle"
+              style="display:inline-block;width:300px;height:600px"
+              data-ad-client="ca-pub-2811298199735743"
+              data-ad-slot="3746614119"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>`;
+    });
+  },
+
   actions: {
     startPlaying() {
       if(this.get('hasStarted')) {
