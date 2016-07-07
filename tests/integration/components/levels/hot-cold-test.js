@@ -9,7 +9,7 @@ test('it renders', function(assert) {
 
   this.render(hbs`
     {{#levels/camo-button}}
-      {{partial 'partials/thebutton'}}
+      <button class="thebutton">Clean this up!</button>
     {{/levels/camo-button}}
   `);
 
