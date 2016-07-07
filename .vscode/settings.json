@@ -19,7 +19,6 @@
     "**/dist": true,
     "**/bower_components": true,
     "**/node_modules": true,
-    "**/public": true,
     "**/tmp": true,
     "**/vendor": true
   }

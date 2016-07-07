@@ -17,7 +17,7 @@ export default Ember.Component.extend({
         if(this.get('countDownDisplay')) {
           this.scheduleCountdown();
         } else {
-          this.sendAction('startPlaying');
+          this.attrs.startPlaying();
           this.set('countDownDisplay', INTITIAL_COUNTDOWN);
         }
       }

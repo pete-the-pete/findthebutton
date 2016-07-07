@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import BaseLevel from './base-level';
 
 export default BaseLevel.extend({
@@ -7,10 +8,11 @@ export default BaseLevel.extend({
   didRender() {
     this._super(...arguments);
 
-    let val = this.get('attrs.currentLevel.value');
-    let level = val > 0 ? val : 1;
+    Ember.run.next(this, () => {
+      const level = this.get('currentLevel');
 
-    this.set('camoLevel', `camo-${level % 5}`);
-    this._positionButton(this.get('element').getBoundingClientRect());
+      this.set('camoLevel', `camo-${(level % 5) + 1}`);
+      this._positionButton();
+    });
   }
 });

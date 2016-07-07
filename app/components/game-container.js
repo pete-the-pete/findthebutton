@@ -1,10 +1,10 @@
 import Ember from 'ember';
 
 const LEVELS = [
-  // 'Peek-a-Boo',
-  // 'Hot-Cold',
+  //'Peek-a-Boo',
+  'Hot-Cold'/*,*/
   // 'Too-Many-Buttons',
-  'Camo-Button'
+  // 'Camo-Button'
 ];
 const ROUNDS = 5;
 const LAST_LEVEL = (LEVELS.length * ROUNDS) - 1;
@@ -84,10 +84,6 @@ export default Ember.Component.extend({
       'isWinner': false,
       'currentLevel': 0
     });
-  },
-
-  init() {
-    this._super(...arguments);
   },
 
   didRender() {
