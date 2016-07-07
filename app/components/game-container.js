@@ -1,10 +1,10 @@
 import Ember from 'ember';
 
 const LEVELS = [
-  //'Peek-a-Boo',
-  'Hot-Cold'/*,*/
-  // 'Too-Many-Buttons',
-  // 'Camo-Button'
+  'Peek-a-Boo',
+  'Hot-Cold',
+  'Too-Many-Buttons',
+  'Camo-Button'
 ];
 const ROUNDS = 5;
 const LAST_LEVEL = (LEVELS.length * ROUNDS) - 1;
@@ -40,7 +40,7 @@ export default Ember.Component.extend({
   isWinner: false,
 
   playTime: Ember.computed('stopwatch.timer.time', function() {
-    return this.get('stopwatch.timer.time');
+    return (this.get('stopwatch.timer.time')/1000).toFixed(3);
   }),
 
   /**
@@ -106,7 +106,6 @@ export default Ember.Component.extend({
   actions: {
     startPlaying() {
       if(this.get('hasStarted')) {
-        this.incrementProperty('currentLevel');
         this._resume();
       } else {
         this._start();
@@ -119,6 +118,7 @@ export default Ember.Component.extend({
 
     foundButton() {
       this._pause();
+      this.incrementProperty('currentLevel');
       if(this.get('currentLevel') === LAST_LEVEL) {
         this._stop();
         this.set('isWinner', true);
