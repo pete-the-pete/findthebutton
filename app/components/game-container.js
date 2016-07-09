@@ -103,6 +103,12 @@ export default Ember.Component.extend({
     });
   },
 
+  click(e) {
+    if(e.target.className !== 'thebutton' && !this.get('isPlaying')) {
+      this.actions.startPlaying.call(this);
+    }
+  },
+
   actions: {
     startPlaying() {
       if(this.get('hasStarted')) {
@@ -110,10 +116,6 @@ export default Ember.Component.extend({
       } else {
         this._start();
       }
-    },
-
-    pausePlaying() {
-      this._pause();
     },
 
     foundButton() {

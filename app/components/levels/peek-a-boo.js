@@ -6,16 +6,16 @@ export default BaseLevel.extend({
   iteration: 1,
 
   _step() {
-    if(!this.get('isDestroying') && !this.get('isDestroyed')) {
       Ember.run.next(this, () => {
-        this._hide();
-        this._positionButton();
-        if(this.iteration++ % 2) {
-          this._show();
+        if(!this.get('isDestroying') && !this.get('isDestroyed')) {
+          this._hide();
+          this._positionButton();
+          if(this.iteration++ % 2) {
+            this._show();
+          }
+          this.stepTimer = Ember.run.later(this, this._step, this.delay);
         }
-        this.stepTimer = Ember.run.later(this, this._step, this.delay);
       });
-    }
   },
 
   init: function() {

@@ -44,8 +44,8 @@ export default Ember.Component.extend({
       }
     }
 
-    Ember.run(() => {
-      let b = this.element.querySelector('button');
+    Ember.run.next(() => {
+      let b = this.get('element').querySelector('button');
       b.style.top = `${top}px`;
       b.style.left = `${left}px`;
       moveDefer.resolve({top, left});
