@@ -15,7 +15,7 @@ export default BaseLevel.extend({
     let el = this.get('element');
 
     if(this.get('isPlaying')) {
-      Ember.run.next(this, () => {
+      Ember.run.scheduleOnce('afterRender', this, () => {
         let currentLevel = this.get('currentLevel');
         let {height: bHeight, width: bWidth} = this.buttonRect;
         let dimensions = currentLevel > 0 ? (100 * (1+(currentLevel/2))) : 100;

@@ -8,7 +8,7 @@ export default BaseLevel.extend({
   didRender() {
     this._super(...arguments);
 
-    Ember.run.next(this, () => {
+    Ember.run.scheduleOnce('afterRender', this, () => {
       const level = this.get('currentLevel');
 
       this.set('camoLevel', `camo-${(level % 5) + 1}`);
