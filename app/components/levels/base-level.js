@@ -11,18 +11,21 @@ export default Ember.Component.extend({
 
 
   _hide: function() {
-    this.set('hideButton', true);
-    this.set('showButton', false);
+    if(!this.isDestroying && !this.isDestroyed) {
+      this.set('hideButton', true);
+      this.set('showButton', false);
+    }
   },
 
   _show: function() {
-    this.set('hideButton', false);
-    this.set('showButton', true);
+    if(!this.isDestroying && !this.isDestroyed) {
+      this.set('hideButton', false);
+      this.set('showButton', true);
+    }
   },
 
   /**
    * move the top and left around in the parent.
-   * the parent gets larger each level, and the button gets smaller
    * the button is square to make things easier
    */
   _positionButton: function(maximums=this.parentRect, min=10, excludeRange=undefined) {
