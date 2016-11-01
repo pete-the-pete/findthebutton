@@ -17,7 +17,7 @@
     "url": "https://github.com/pete-the-pete/findthebutton"
   },
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 4"
   },
   "author": "pete_the_pete",
   "license": "MIT",
